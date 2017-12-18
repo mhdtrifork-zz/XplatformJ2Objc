@@ -22,10 +22,13 @@ class CreateUserViewController: UIViewController {
         view.backgroundColor = .lightGray
         usernameField.backgroundColor = .white
         usernameField.placeholder = "username"
+        usernameField.delegate = self
         passwordField.backgroundColor = .white
         passwordField.placeholder = "password"
+        passwordField.delegate = self
         password2Field.backgroundColor = .white
         password2Field.placeholder = "password againg"
+        password2Field.delegate = self
         
         errorLabel.numberOfLines = 0
         errorLabel.font = UIFont.systemFont(ofSize: 17)
@@ -75,5 +78,12 @@ class CreateUserViewController: UIViewController {
 
     @objc func createUser() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension CreateUserViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        return true
     }
 }
