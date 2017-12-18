@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.text.Editable;
 
+import com.xplatformdemo.libsharedcode.Networking;
 import com.xplatformdemo.libsharedcode.StringVerification;
 import com.xplatformdemo.libsharedcode.Verified;
 
@@ -44,6 +45,18 @@ public class CreateUserActivity extends AppCompatActivity {
                         if (passwordsAreIdentical.isValid) {
                             errorTextView.setVisibility(View.INVISIBLE);
                             //call backend
+                            try {
+                                if (Networking.createUser(username, password)) {
+                                    errorTextView.setText("Succes");
+                                    errorTextView.setVisibility(View.VISIBLE);
+                                    CreateUserActivity.this.finish();
+                                } else {
+                                    errorTextView.setText("Der eksisterer allerede en bruger med dette navn");
+                                    errorTextView.setVisibility(View.VISIBLE);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } else {
                             errorTextView.setText(passwordsAreIdentical.errorMsg);
                             errorTextView.setVisibility(View.VISIBLE);
