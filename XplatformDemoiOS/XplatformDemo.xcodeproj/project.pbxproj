@@ -10,6 +10,11 @@
 		5A26A1931FDE8AB70007B313 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26A1921FDE8AB70007B313 /* LoginViewController.swift */; };
 		5A26A1951FDE8AE70007B313 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26A1941FDE8AE70007B313 /* CreateUserViewController.swift */; };
 		5A26A1971FDE8B120007B313 /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26A1961FDE8B120007B313 /* ShowDataViewController.swift */; };
+		5AF502891FE801990031E136 /* AppConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF502881FE801990031E136 /* AppConfig.xcconfig */; };
+		5AF502911FE804100031E136 /* Networking.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5028E1FE804100031E136 /* Networking.java */; };
+		5AF502921FE804100031E136 /* StringVerification.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5028F1FE804100031E136 /* StringVerification.java */; };
+		5AF502931FE804100031E136 /* Verified.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF502901FE804100031E136 /* Verified.java */; };
+		5AF502971FE805A50031E136 /* libSharedCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF5027E1FE800F00031E136 /* libSharedCode.a */; };
 		5AF894EE1FDE8106003263C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF894ED1FDE8106003263C5 /* AppDelegate.swift */; };
 		5AF894F01FDE8106003263C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF894EF1FDE8106003263C5 /* ViewController.swift */; };
 		5AF894F51FDE8106003263C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF894F41FDE8106003263C5 /* Assets.xcassets */; };
@@ -17,12 +22,56 @@
 		DB570D91AF47CAEBE94C96CF /* Pods_XplatformDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D246869D6F37A6A986FBF8A /* Pods_XplatformDemo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		5AF502941FE8045C0031E136 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.java;
+			isEditable = 1;
+			outputFiles = (
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
+			);
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories -g ${INPUT_FILE_PATH};\n#removed  --no-class-methods flag\n# Optionally, you may also set prefix for your java packages by adding --prefix.\n# \\\"${J2OBJC_HOME}/j2objc\\\" -d ${GENERATED_FILES_DIR} -sourcepath \\\"${JAVA_SOURCE_PATH}\\\" --no-package-directories --prefix org.j2objc.sample.shared=OJSS --no-class-methods -g ${INPUT_FILE_PATH};\";";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		5AF502951FE8059E0031E136 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AF894E21FDE8106003263C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AF5027D1FE800F00031E136;
+			remoteInfo = SharedCode;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5AF5027C1FE800F00031E136 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04D9325C1DF2D05799061DD1 /* Pods-XplatformDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XplatformDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XplatformDemo/Pods-XplatformDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		0D246869D6F37A6A986FBF8A /* Pods_XplatformDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XplatformDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A26A1921FDE8AB70007B313 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5A26A1941FDE8AE70007B313 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		5A26A1961FDE8B120007B313 /* ShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataViewController.swift; sourceTree = "<group>"; };
+		5AF502691FE800DB0031E136 /* Sb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sb.h; sourceTree = "<group>"; };
+		5AF5026A1FE800DB0031E136 /* Sb.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sb.m; sourceTree = "<group>"; };
+		5AF5027E1FE800F00031E136 /* libSharedCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSharedCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AF502871FE8017E0031E136 /* LibConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LibConfig.xcconfig; sourceTree = "<group>"; };
+		5AF502881FE801990031E136 /* AppConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppConfig.xcconfig; sourceTree = "<group>"; };
+		5AF5028E1FE804100031E136 /* Networking.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Networking.java; sourceTree = "<group>"; };
+		5AF5028F1FE804100031E136 /* StringVerification.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StringVerification.java; sourceTree = "<group>"; };
+		5AF502901FE804100031E136 /* Verified.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Verified.java; sourceTree = "<group>"; };
 		5AF894EA1FDE8106003263C5 /* XplatformDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XplatformDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF894ED1FDE8106003263C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AF894EF1FDE8106003263C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,10 +82,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5AF5027B1FE800F00031E136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AF894E71FDE8106003263C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF502971FE805A50031E136 /* libSharedCode.a in Frameworks */,
 				DB570D91AF47CAEBE94C96CF /* Pods_XplatformDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,10 +101,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AF502681FE800DB0031E136 /* Sb */ = {
+			isa = PBXGroup;
+			children = (
+				5AF502691FE800DB0031E136 /* Sb.h */,
+				5AF5026A1FE800DB0031E136 /* Sb.m */,
+			);
+			path = Sb;
+			sourceTree = "<group>";
+		};
+		5AF5027F1FE800F00031E136 /* SharedCode */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5028A1FE804100031E136 /* java */,
+				5AF502871FE8017E0031E136 /* LibConfig.xcconfig */,
+			);
+			path = SharedCode;
+			sourceTree = "<group>";
+		};
+		5AF5028A1FE804100031E136 /* java */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5028B1FE804100031E136 /* com */,
+			);
+			name = java;
+			path = ../../CrossplatformDemo/libSharedCode/src/main/java;
+			sourceTree = "<group>";
+		};
+		5AF5028B1FE804100031E136 /* com */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5028C1FE804100031E136 /* xplatformdemo */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		5AF5028C1FE804100031E136 /* xplatformdemo */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5028D1FE804100031E136 /* libsharedcode */,
+			);
+			path = xplatformdemo;
+			sourceTree = "<group>";
+		};
+		5AF5028D1FE804100031E136 /* libsharedcode */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5028E1FE804100031E136 /* Networking.java */,
+				5AF5028F1FE804100031E136 /* StringVerification.java */,
+				5AF502901FE804100031E136 /* Verified.java */,
+			);
+			path = libsharedcode;
+			sourceTree = "<group>";
+		};
 		5AF894E11FDE8106003263C5 = {
 			isa = PBXGroup;
 			children = (
 				5AF894EC1FDE8106003263C5 /* XplatformDemo */,
+				5AF502681FE800DB0031E136 /* Sb */,
+				5AF5027F1FE800F00031E136 /* SharedCode */,
 				5AF894EB1FDE8106003263C5 /* Products */,
 				F7C40391F0BEEA9A2945120C /* Pods */,
 				D42AB3168F41F8E1E1D7F8D1 /* Frameworks */,
@@ -58,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF894EA1FDE8106003263C5 /* XplatformDemo.app */,
+				5AF5027E1FE800F00031E136 /* libSharedCode.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +186,7 @@
 				5A26A1921FDE8AB70007B313 /* LoginViewController.swift */,
 				5A26A1941FDE8AE70007B313 /* CreateUserViewController.swift */,
 				5A26A1961FDE8B120007B313 /* ShowDataViewController.swift */,
+				5AF502881FE801990031E136 /* AppConfig.xcconfig */,
 			);
 			path = XplatformDemo;
 			sourceTree = "<group>";
@@ -97,6 +211,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5AF5027D1FE800F00031E136 /* SharedCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AF502841FE800F00031E136 /* Build configuration list for PBXNativeTarget "SharedCode" */;
+			buildPhases = (
+				5AF5027A1FE800F00031E136 /* Sources */,
+				5AF5027B1FE800F00031E136 /* Frameworks */,
+				5AF5027C1FE800F00031E136 /* CopyFiles */,
+			);
+			buildRules = (
+				5AF502941FE8045C0031E136 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = SharedCode;
+			productName = SharedCode;
+			productReference = 5AF5027E1FE800F00031E136 /* libSharedCode.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		5AF894E91FDE8106003263C5 /* XplatformDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AF894FC1FDE8107003263C5 /* Build configuration list for PBXNativeTarget "XplatformDemo" */;
@@ -111,6 +243,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5AF502961FE8059E0031E136 /* PBXTargetDependency */,
 			);
 			name = XplatformDemo;
 			productName = XplatformDemo;
@@ -127,6 +260,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Trifork;
 				TargetAttributes = {
+					5AF5027D1FE800F00031E136 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					5AF894E91FDE8106003263C5 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -147,6 +284,7 @@
 			projectRoot = "";
 			targets = (
 				5AF894E91FDE8106003263C5 /* XplatformDemo */,
+				5AF5027D1FE800F00031E136 /* SharedCode */,
 			);
 		};
 /* End PBXProject section */
@@ -157,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AF894F81FDE8106003263C5 /* LaunchScreen.storyboard in Resources */,
+				5AF502891FE801990031E136 /* AppConfig.xcconfig in Resources */,
 				5AF894F51FDE8106003263C5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +357,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5AF5027A1FE800F00031E136 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AF502921FE804100031E136 /* StringVerification.java in Sources */,
+				5AF502911FE804100031E136 /* Networking.java in Sources */,
+				5AF502931FE804100031E136 /* Verified.java in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AF894E61FDE8106003263C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +381,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5AF502961FE8059E0031E136 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AF5027D1FE800F00031E136 /* SharedCode */;
+			targetProxy = 5AF502951FE8059E0031E136 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		5AF894F61FDE8106003263C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -244,6 +401,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5AF502851FE800F00031E136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AF502871FE8017E0031E136 /* LibConfig.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGMPFLA2F;
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5AF502861FE800F00031E136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AF502871FE8017E0031E136 /* LibConfig.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZZGMPFLA2F;
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5AF894FA1FDE8107003263C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -298,6 +483,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -347,19 +533,21 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		5AF894FD1FDE8107003263C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04D9325C1DF2D05799061DD1 /* Pods-XplatformDemo.debug.xcconfig */;
+			baseConfigurationReference = 5AF502881FE801990031E136 /* AppConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;
 				INFOPLIST_FILE = XplatformDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Trifork.XplatformDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -376,6 +564,7 @@
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;
 				INFOPLIST_FILE = XplatformDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Trifork.XplatformDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -386,6 +575,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5AF502841FE800F00031E136 /* Build configuration list for PBXNativeTarget "SharedCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AF502851FE800F00031E136 /* Debug */,
+				5AF502861FE800F00031E136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5AF894E51FDE8106003263C5 /* Build configuration list for PBXProject "XplatformDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
