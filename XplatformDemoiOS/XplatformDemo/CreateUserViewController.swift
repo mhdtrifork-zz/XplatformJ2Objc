@@ -22,13 +22,10 @@ class CreateUserViewController: UIViewController {
         view.backgroundColor = .lightGray
         usernameField.backgroundColor = .white
         usernameField.placeholder = "username"
-        usernameField.delegate = self
         passwordField.backgroundColor = .white
         passwordField.placeholder = "password"
-        passwordField.delegate = self
         password2Field.backgroundColor = .white
-        password2Field.placeholder = "password againg"
-        password2Field.delegate = self
+        password2Field.placeholder = "password again"
         
         errorLabel.numberOfLines = 0
         errorLabel.font = UIFont.systemFont(ofSize: 17)
@@ -77,13 +74,26 @@ class CreateUserViewController: UIViewController {
     }
 
     @objc func createUser() {
-        self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension CreateUserViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let username = usernameField.text ?? ""
+        let password = passwordField.text ?? ""
+        let password2 = password2Field.text ?? ""
         
-        return true
+        let usernameVerified = J2OStringVerification_verifyUsernameWithNSString_(username)
+        if usernameVerified!.isValid() {
+            let passwordVerified = J2OStringVerification_verifyPasswordWithNSString_(password)
+            if passwordVerified!.isValid() {
+                let passwordCompare = J2OStringVerification_compareStringsWithNSString_withNSString_(password, password2)
+                if passwordCompare!.isValid() {
+                    
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    errorLabel.text = passwordCompare?.errorMsg()
+                }
+            } else {
+                errorLabel.text = passwordVerified?.errorMsg()
+            }
+        } else {
+            errorLabel.text = usernameVerified?.errorMsg()
+        }
     }
 }

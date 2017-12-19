@@ -38,11 +38,11 @@ public class CreateUserActivity extends AppCompatActivity {
                 String repeatPassword = repeatPasswordField.getText().toString();
 
                 Verified usernameIsValid = StringVerification.verifyUsername(username);
-                if (usernameIsValid.isValid) {
+                if (usernameIsValid.isValid()) {
                     Verified passwordIsValid = StringVerification.verifyPassword(password);
-                    if (passwordIsValid.isValid) {
+                    if (passwordIsValid.isValid()) {
                         Verified passwordsAreIdentical = StringVerification.compareStrings(password, repeatPassword);
-                        if (passwordsAreIdentical.isValid) {
+                        if (passwordsAreIdentical.isValid()) {
                             errorTextView.setVisibility(View.INVISIBLE);
                             //call backend
                             try {
@@ -58,15 +58,15 @@ public class CreateUserActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-                            errorTextView.setText(passwordsAreIdentical.errorMsg);
+                            errorTextView.setText(passwordsAreIdentical.errorMsg());
                             errorTextView.setVisibility(View.VISIBLE);
                         }
                     } else {
-                        errorTextView.setText(passwordIsValid.errorMsg);
+                        errorTextView.setText(passwordIsValid.errorMsg());
                         errorTextView.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    errorTextView.setText(usernameIsValid.errorMsg);
+                    errorTextView.setText(usernameIsValid.errorMsg());
                     errorTextView.setVisibility(View.VISIBLE);
                 }
             }

@@ -5,12 +5,20 @@ package com.xplatformdemo.libsharedcode;
  */
 
 public class Verified {
-    public final boolean isValid;
-    public final String errorMsg;
+    private boolean _isValid;
+    private String _errorMsg;
+
+    public boolean isValid() {
+        return _isValid;
+    }
+
+    public String errorMsg() {
+        return _errorMsg;
+    }
 
     public Verified(boolean isValid, String errorMsg) {
-        this.isValid = isValid;
-        this.errorMsg = errorMsg;
+        this._isValid = isValid;
+        this._errorMsg = errorMsg;
 
     }
 
