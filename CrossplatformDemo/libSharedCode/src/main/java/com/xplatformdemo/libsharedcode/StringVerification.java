@@ -2,7 +2,7 @@ package com.xplatformdemo.libsharedcode;
 
 public class StringVerification {
 
-    public static Verified verifyUsername(String username) {
+    public Verified verifyUsername(String username) {
         if (username.length() > 0) {
             return new Verified(true, "");
         } else {
@@ -10,7 +10,7 @@ public class StringVerification {
         }
     }
 
-    public static Verified verifyPassword(String password) {
+    public Verified verifyPassword(String password) {
         if (password.length() >= 4) {
             return new Verified(true, "");
         } else {

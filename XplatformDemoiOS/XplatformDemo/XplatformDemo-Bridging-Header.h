@@ -4,4 +4,4 @@
 
 #import "StringVerification.h"
 #import "Verified.h"
-#import "Networking.h"
+#import "NetworkingHelper.h"

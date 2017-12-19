@@ -11,11 +11,11 @@
 		5A26A1951FDE8AE70007B313 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26A1941FDE8AE70007B313 /* CreateUserViewController.swift */; };
 		5A26A1971FDE8B120007B313 /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A26A1961FDE8B120007B313 /* ShowDataViewController.swift */; };
 		5AF502891FE801990031E136 /* AppConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AF502881FE801990031E136 /* AppConfig.xcconfig */; };
-		5AF502911FE804100031E136 /* Networking.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5028E1FE804100031E136 /* Networking.java */; };
 		5AF502921FE804100031E136 /* StringVerification.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5028F1FE804100031E136 /* StringVerification.java */; };
 		5AF502931FE804100031E136 /* Verified.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF502901FE804100031E136 /* Verified.java */; };
 		5AF502971FE805A50031E136 /* libSharedCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF5027E1FE800F00031E136 /* libSharedCode.a */; };
 		5AF5029D1FE8F64F0031E136 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF5029C1FE8F64F0031E136 /* libiconv.tbd */; };
+		5AF5029F1FE907260031E136 /* NetworkingHelper.java in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5029E1FE907260031E136 /* NetworkingHelper.java */; };
 		5AF894EE1FDE8106003263C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF894ED1FDE8106003263C5 /* AppDelegate.swift */; };
 		5AF894F01FDE8106003263C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF894EF1FDE8106003263C5 /* ViewController.swift */; };
 		5AF894F51FDE8106003263C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AF894F41FDE8106003263C5 /* Assets.xcassets */; };
@@ -70,11 +70,11 @@
 		5AF5027E1FE800F00031E136 /* libSharedCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSharedCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF502871FE8017E0031E136 /* LibConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LibConfig.xcconfig; sourceTree = "<group>"; };
 		5AF502881FE801990031E136 /* AppConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppConfig.xcconfig; sourceTree = "<group>"; };
-		5AF5028E1FE804100031E136 /* Networking.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Networking.java; sourceTree = "<group>"; };
 		5AF5028F1FE804100031E136 /* StringVerification.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StringVerification.java; sourceTree = "<group>"; };
 		5AF502901FE804100031E136 /* Verified.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Verified.java; sourceTree = "<group>"; };
 		5AF502991FE819480031E136 /* XplatformDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XplatformDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5AF5029C1FE8F64F0031E136 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		5AF5029E1FE907260031E136 /* NetworkingHelper.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = NetworkingHelper.java; sourceTree = "<group>"; };
 		5AF894EA1FDE8106003263C5 /* XplatformDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XplatformDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF894ED1FDE8106003263C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AF894EF1FDE8106003263C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		5AF5028D1FE804100031E136 /* libsharedcode */ = {
 			isa = PBXGroup;
 			children = (
-				5AF5028E1FE804100031E136 /* Networking.java */,
+				5AF5029E1FE907260031E136 /* NetworkingHelper.java */,
 				5AF5028F1FE804100031E136 /* StringVerification.java */,
 				5AF502901FE804100031E136 /* Verified.java */,
 			);
@@ -369,8 +369,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AF502921FE804100031E136 /* StringVerification.java in Sources */,
-				5AF502911FE804100031E136 /* Networking.java in Sources */,
 				5AF502931FE804100031E136 /* Verified.java in Sources */,
+				5AF5029F1FE907260031E136 /* NetworkingHelper.java in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

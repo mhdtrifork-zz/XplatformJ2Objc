@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.text.Editable;
 
-import com.xplatformdemo.libsharedcode.Networking;
+import com.xplatformdemo.libsharedcode.NetworkingHelper;
 import com.xplatformdemo.libsharedcode.StringVerification;
 import com.xplatformdemo.libsharedcode.Verified;
 
@@ -37,16 +37,18 @@ public class CreateUserActivity extends AppCompatActivity {
                 String password = passwordField.getText().toString();
                 String repeatPassword = repeatPasswordField.getText().toString();
 
-                Verified usernameIsValid = StringVerification.verifyUsername(username);
+                StringVerification verify = new StringVerification();
+                Verified usernameIsValid = verify.verifyUsername(username);
                 if (usernameIsValid.isValid()) {
-                    Verified passwordIsValid = StringVerification.verifyPassword(password);
+                    Verified passwordIsValid = verify.verifyPassword(password);
                     if (passwordIsValid.isValid()) {
                         Verified passwordsAreIdentical = StringVerification.compareStrings(password, repeatPassword);
                         if (passwordsAreIdentical.isValid()) {
                             errorTextView.setVisibility(View.INVISIBLE);
                             //call backend
                             try {
-                                if (Networking.createUser(username, password)) {
+                                NetworkingHelper backend = new NetworkingHelper();
+                                if (backend.createUser(username, password)) {
                                     errorTextView.setText("Succes");
                                     errorTextView.setVisibility(View.VISIBLE);
                                     CreateUserActivity.this.finish();
@@ -56,6 +58,8 @@ public class CreateUserActivity extends AppCompatActivity {
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
+                                errorTextView.setText("Der skete en fejl under forbindelsen med serveren");
+                                errorTextView.setVisibility(View.VISIBLE);
                             }
                         } else {
                             errorTextView.setText(passwordsAreIdentical.errorMsg());

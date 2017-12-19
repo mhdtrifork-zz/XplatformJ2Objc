@@ -78,13 +78,23 @@ class CreateUserViewController: UIViewController {
         let password = passwordField.text ?? ""
         let password2 = password2Field.text ?? ""
         
-        let usernameVerified = J2OStringVerification_verifyUsernameWithNSString_(username)
-        if usernameVerified!.isValid() {
-            let passwordVerified = J2OStringVerification_verifyPasswordWithNSString_(password)
+        let verify: J2OStringVerification! = create_J2OStringVerification_init()
+        let usernameVerified: J2OVerified! = verify.verifyUsername(with: username)
+        if usernameVerified.isValid() {
+            let passwordVerified: J2OVerified! = verify.verifyPassword(with: password)
             if passwordVerified!.isValid() {
-                let passwordCompare = J2OStringVerification_compareStringsWithNSString_withNSString_(password, password2)
-                if passwordCompare!.isValid() {
-                    
+                let passwordCompare: J2OVerified! = J2OStringVerification_compareStringsWithNSString_withNSString_(password, password2)
+                if passwordCompare.isValid() {
+                    errorLabel.isHidden = true
+                    //JavaLangBoolean doesnt play nicely with either swift or objc. (use primitive boolean instead)
+                    let backend: J2ONetworkingHelper! = create_J2ONetworkingHelper_init()
+                    if backend.createUser(with: username, with: password) {
+                        errorLabel.isHidden = false
+                        errorLabel.text = "Succes"
+                    } else {
+                        errorLabel.isHidden = false
+                        errorLabel.text = "Der eksisterer allerede en bruger med dette navn"
+                    }
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     errorLabel.text = passwordCompare?.errorMsg()

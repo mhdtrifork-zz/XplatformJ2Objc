@@ -13,22 +13,21 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 
-public class Networking {
+public class NetworkingHelper {
 
-    private static <T> T execute(Callable<T> callable) throws Exception {
+    private <T> T execute(Callable<T> callable) throws Exception {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<T> result = executor.submit(callable);
         try {
             return result.get(10000, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
-            System.out.println(e);
-            return null;
+            throw (e);
         } finally {
             executor.shutdown();
         }
     }
 
-    public static Boolean createUser(final String username, final String password) throws Exception {
+    public boolean createUser(final String username, final String password) throws Exception {
         Callable<Boolean> callable = new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
@@ -38,14 +37,13 @@ public class Networking {
                     httpCon.setRequestMethod("POST");
 
                     int responseCode = httpCon.getResponseCode();
-                    System.out.println("test"+responseCode);
                     return responseCode == 200;
                 } catch (Exception e) {
                     throw (e);
                 }
             }
         };
-        return execute(callable);
+        return execute(callable).booleanValue();
     }
 
     /*public static void login(String username, String password) throws Exception {
