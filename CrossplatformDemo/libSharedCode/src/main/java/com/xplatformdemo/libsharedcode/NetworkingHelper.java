@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-//import org.json.JSONObject;
+import org.json.*;
 
 public class NetworkingHelper {
 
@@ -82,7 +82,7 @@ public class NetworkingHelper {
                     }
                     in.close();
 
-                    //JSONObject json = new JSONObject(response.toString());
+                    JSONArray json = new JSONArray(response.toString());
                     //print result
                     System.out.println(response.toString());
                 } catch (Exception e) {
