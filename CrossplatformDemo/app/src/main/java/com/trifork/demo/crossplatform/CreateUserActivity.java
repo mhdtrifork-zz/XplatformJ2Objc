@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.text.Editable;
 
 import com.xplatformdemo.libsharedcode.NetworkingHelper;
 import com.xplatformdemo.libsharedcode.StringVerification;

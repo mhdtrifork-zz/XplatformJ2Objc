@@ -11,7 +11,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+//import org.json.JSONObject;
 
 public class NetworkingHelper {
 
@@ -46,7 +48,12 @@ public class NetworkingHelper {
         return execute(callable).booleanValue();
     }
 
-    /*public static void login(String username, String password) throws Exception {
+    public void login(String username, String password) throws Exception {
+
+
+    }
+
+    public void getData() throws Exception {
         Runnable runAble = new Runnable() {
             @Override
             public void run() {
@@ -54,9 +61,6 @@ public class NetworkingHelper {
                     URL serverUrl = new URL("http://codesharing.getsandbox.com/users");
                     HttpURLConnection httpCon = (HttpURLConnection) serverUrl.openConnection();
                     httpCon.setRequestMethod("GET");
-
-                    String test = "{username:\"test\",password\"1234\"}";
-
                     //OutputStream op = httpCon.getOutputStream();
                     //DataOutputStream wr = new DataOutputStream(op);
                     // wr.writeBytes(test);
@@ -66,10 +70,7 @@ public class NetworkingHelper {
 
 
                     int responseCode = httpCon.getResponseCode();
-                    System.out.println("\nSending 'POST' request to URL : " + serverUrl);
-                    System.out.println("Post parameters : " + test);
-                    System.out.println("Response Code : " + responseCode);
-
+                    String stringResponse = httpCon.getResponseMessage();
 
                     BufferedReader in = new BufferedReader(
                             new InputStreamReader(httpCon.getInputStream()));
@@ -81,6 +82,7 @@ public class NetworkingHelper {
                     }
                     in.close();
 
+                    //JSONObject json = new JSONObject(response.toString());
                     //print result
                     System.out.println(response.toString());
                 } catch (Exception e) {
@@ -98,5 +100,5 @@ public class NetworkingHelper {
         //InputStream response = httpCon.getInputStream();
         //ConsoleHandler logger = new ConsoleHandler();
         //logger.publish(new LogRecord(Level.ALL, response.toString()));
-    }*/
+    }
 }

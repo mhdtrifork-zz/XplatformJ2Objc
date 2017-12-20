@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.xplatformdemo.libsharedcode.NetworkingHelper;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,13 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.login_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                NetworkingHelper helper = new NetworkingHelper();
+                try {
+                    helper.getData();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
 

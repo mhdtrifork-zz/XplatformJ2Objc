@@ -78,12 +78,15 @@ class CreateUserViewController: UIViewController {
         let password = passwordField.text ?? ""
         let password2 = password2Field.text ?? ""
         
-        let verify: J2OStringVerification! = create_J2OStringVerification_init()
-        let usernameVerified: J2OVerified! = verify.verifyUsername(with: username)
+        //You can specify a prefix instead of the packagename, in this case J2O
+        //Or you can use @ObjectiveCName("func name") in the java file, like with stringVerification here
+        let verify: StringVerification! = create_StringVerification_init()
+        let usernameVerified: J2OVerified! = verify.verifyUsername(username)
         if usernameVerified.isValid() {
-            let passwordVerified: J2OVerified! = verify.verifyPassword(with: password)
+            let passwordVerified: J2OVerified! = verify.verifyPassword(password)
             if passwordVerified!.isValid() {
-                let passwordCompare: J2OVerified! = J2OStringVerification_compareStringsWithNSString_withNSString_(password, password2)
+                //Class methods use c style
+                let passwordCompare: J2OVerified! = StringVerification_compareString_withString_(password, password2)
                 if passwordCompare.isValid() {
                     errorLabel.isHidden = true
                     //JavaLangBoolean doesnt play nicely with either swift or objc. (use primitive boolean instead)
