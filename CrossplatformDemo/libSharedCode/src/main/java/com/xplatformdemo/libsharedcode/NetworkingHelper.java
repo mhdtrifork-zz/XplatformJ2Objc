@@ -48,32 +48,35 @@ public class NetworkingHelper {
         return execute(callable).booleanValue();
     }
 
-    public void login(String username, String password) throws Exception {
+    public boolean login(String username, String password) throws Exception {
+        Callable<Boolean> callable = new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                try {
+                    URL serverUrl = new URL("http://codesharing.getsandbox.com/login/"+username+"/"+password);
+                    HttpURLConnection httpCon = (HttpURLConnection) serverUrl.openConnection();
+                    httpCon.setRequestMethod("POST");
 
-
+                    int responseCode = httpCon.getResponseCode();
+                    return responseCode == 200;
+                } catch (Exception e) {
+                    throw (e);
+                }
+            }
+        };
+        return execute(callable).booleanValue();
     }
 
-    public void getData() throws Exception {
-        Runnable runAble = new Runnable() {
+    public JSONArray getData() throws Exception {
+        Callable<JSONArray> callable = new Callable<JSONArray>() {
             @Override
-            public void run() {
+            public JSONArray call() throws Exception {
                 try {
                     URL serverUrl = new URL("http://codesharing.getsandbox.com/users");
                     HttpURLConnection httpCon = (HttpURLConnection) serverUrl.openConnection();
                     httpCon.setRequestMethod("GET");
-                    //OutputStream op = httpCon.getOutputStream();
-                    //DataOutputStream wr = new DataOutputStream(op);
-                    // wr.writeBytes(test);
-                    // wr.flush();
-                    //wr.close();
-                    //op.close();
 
-
-                    int responseCode = httpCon.getResponseCode();
-                    String stringResponse = httpCon.getResponseMessage();
-
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(httpCon.getInputStream()));
+                    BufferedReader in = new BufferedReader(new InputStreamReader(httpCon.getInputStream()));
                     String inputLine;
                     StringBuffer response = new StringBuffer();
 
@@ -81,24 +84,12 @@ public class NetworkingHelper {
                         response.append(inputLine);
                     }
                     in.close();
-
-                    JSONArray json = new JSONArray(response.toString());
-                    //print result
-                    System.out.println(response.toString());
+                    return new JSONArray(response.toString());
                 } catch (Exception e) {
-                    System.out.println(e);
+                    throw(e);
                 }
             }
         };
-        ExecutorService executor = Executors.newFixedThreadPool(3);
-        executor.execute(runAble);
-
-
-        // OutputStream output = httpCon.getOutputStream();
-        //output.write(test.getBytes("UTF-8"));
-
-        //InputStream response = httpCon.getInputStream();
-        //ConsoleHandler logger = new ConsoleHandler();
-        //logger.publish(new LogRecord(Level.ALL, response.toString()));
+        return execute(callable);
     }
 }
