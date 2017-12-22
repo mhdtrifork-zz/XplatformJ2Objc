@@ -18,9 +18,24 @@ class ShowDataViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        
+        //must include the .h file for jsonArray if i want to use it in the code
         dataLabel.numberOfLines = 0
         dataLabel.font = UIFont.systemFont(ofSize: 17)
-        dataLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+        let backend: J2ONetworkingHelper! = create_J2ONetworkingHelper_init()
+        if let data = backend.getData() {
+            var jsonString = ""
+            for i in 0...data.length()-1 {
+                if let obj = data.getJSONObject(with: i),
+                    let username = obj.getStringWith("username"),
+                    let password = obj.getStringWith("password") {
+                    jsonString.append("Username:\(username) Password:\(password)\n")
+                }
+            }
+            dataLabel.text = jsonString
+        } else {
+            dataLabel.text = "FEJL"
+        }
         
         view.addSubview(dataLabel)
         dataLabel.snp.makeConstraints { (make) in

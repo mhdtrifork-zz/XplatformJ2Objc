@@ -66,7 +66,12 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login() {
-        self.navigationController?.show(ShowDataViewController(), sender: self)
+        let backend: J2ONetworkingHelper! = create_J2ONetworkingHelper_init()
+        if backend.login(with: usernameField.text ?? "", with: passwordField.text ?? "") {
+            self.navigationController?.show(ShowDataViewController(), sender: self)
+        } else {
+            usernameField.text = "FEJL"
+        }
     }
     
     @objc func createUser() {

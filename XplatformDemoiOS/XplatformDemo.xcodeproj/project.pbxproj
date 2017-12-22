@@ -412,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5AF502871FE8017E0031E136 /* LibConfig.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";
@@ -426,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5AF502871FE8017E0031E136 /* LibConfig.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = "";

@@ -94,11 +94,11 @@ class CreateUserViewController: UIViewController {
                     if backend.createUser(with: username, with: password) {
                         errorLabel.isHidden = false
                         errorLabel.text = "Succes"
+                        self.navigationController?.popViewController(animated: true)
                     } else {
                         errorLabel.isHidden = false
                         errorLabel.text = "Der eksisterer allerede en bruger med dette navn"
                     }
-                    self.navigationController?.popViewController(animated: true)
                 } else {
                     errorLabel.text = passwordCompare?.errorMsg()
                 }
