@@ -557,7 +557,7 @@
 				DEVELOPMENT_TEAM = ZZGMPFLA2F;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${J2OBJC_HOME}/include\"/**",
+					"\"${J2OBJC_HOME}/include\"",
 					"\"${GENERATED_FILES_DIR}\"",
 				);
 				INFOPLIST_FILE = XplatformDemo/Info.plist;
